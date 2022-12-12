@@ -34,9 +34,7 @@ jobs:
       - name: Setup OpenWRT SDK
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          wget https://downloads.openwrt.org/releases/21.02.0-rc1/targets/ramips/mt7620/openwrt-sdk-21.02.0-rc1-ramips-mt7620_gcc-8.4.0_musl.Linux-x86_64.tar.xz
-          mkdir openwrt
-          tar -xvJf openwrt-sdk-21.02.0-rc1-ramips-mt7620_gcc-8.4.0_musl.Linux-x86_64.tar.xz -C ./openwrt/
+          git clone https://github.com/Lienol/openwrt -b 21.02 openwrt
           cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
